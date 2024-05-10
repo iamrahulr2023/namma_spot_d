@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Home.css";
 
 function Home() {
@@ -36,8 +37,8 @@ function Home() {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="#">
-                  logout
+                <a class="nav-link ">
+                  <Link to="/">logout</Link>
                 </a>
               </li>
             </ul>
