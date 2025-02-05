@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Fade } from "react-reveal"; // Import the Fade component from react-reveal
+import { Fade } from "react-awesome-reveal"; // Import the Fade component from react-awesome-reveal
 import ParkingFooter from "./Footer";
 import ParkingPal from "./ParkingPal";
 import "./AHome.css";

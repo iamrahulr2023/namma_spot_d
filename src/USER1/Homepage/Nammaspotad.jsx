@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './Nammaspotad.css';
-import { Fade } from 'react-reveal'; // Import the Fade component from react-reveal
+import { Fade } from 'react-awesome-reveal'; // Import the Fade component from react-awesome-reveal
 import LanguageContext from './LanguageContext'; // Import LanguageContext
 
 const Nammaspotad = () => {
