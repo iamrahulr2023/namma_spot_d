@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+}
+
+.body18 {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  width: 500px;
+}
+
+.verify-app {
+  text-align: center;
+  background-color: #0d2238; /* Blue background color */
+  padding: 20px;
+  min-height: 100vh; /* Ensures the background covers the full viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+}
+
+
+.datas{
+  color: black;
+}
+.verify-app h1 {
+  background-color: #28a745; 
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  display: inline-block;
+  color: white;
+}
+
+.verify-container {
+  background-color: white;
+  padding: 40px; /* Increased padding for more spacing */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px; /* Set maximum width */
+  text-align: left; /* Align text to the left */
+}
+
+.verify-container input {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.verify-container input:first-of-type {
+  margin-bottom: 20px;
+}
+
+.verify-button, .verify-in, .verify-out {
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.verify-button {
+  background-color: rgb(0, 81, 255); /* Blue background color */
+  color: white; /* Text color */
+}
+
+.verify-in {
+  background-color: #28a745;
+  color: white;
+}
+
+.verify-out {
+  background-color: #dc3545;
+  color: white;
+}
+
+.verify-button:hover, .verify-in:hover, .verify-out:hover {
+  opacity: 0.8;
+}
+
+.verify-message {
+  color: red;
+  font-size: 18px;
+  margin: 20px 0;
+}
+
+.verify-details {
+  background-color: white;
+  padding: 20px; 
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px; /* Set maximum width */
+  margin: 20px auto; /* Centering the details box */
+  text-align: left;
+}
+
+.verify-details h3 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.verify-detail-item {
+  margin: 5px 0;
+  color: blue;
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+}
+
+.verify-buttons {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

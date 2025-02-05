@@ -1,0 +1,74 @@
+#about {
+    width: 100%;
+    padding-top: 80px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #abt-cont {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Align items vertically */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .abt-items {
+    flex: 1;
+    padding: 20px;
+    margin: 5px 30px;
+  }
+  
+  .abt-items img {
+    max-width: 100%;
+    width: 600px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .abt-text-content {
+    flex: 1;
+    padding-left: 20px;
+  }
+  
+  .abt-text-content h1 {
+    color: rgb(9, 138, 251);
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .abt-text-content p {
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .abt-text-content p b {
+    color: rgb(9, 138, 251);
+  }
+  /* Add hover effect to the text content */
+.abt-items:hover .abt-text-content {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Add hover effect to the image */
+.abt-items:hover img {
+  filter: brightness(80%);
+  transition: filter 0.3s ease-in-out;
+}
+
+/* Add transition effect to the text content */
+.abt-text-content {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Add transition effect to the image */
+.abt-items img {
+  transition: filter 0.3s ease-in-out;
+}
+
+  

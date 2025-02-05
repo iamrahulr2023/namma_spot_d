@@ -1,0 +1,88 @@
+.translateicon-container {
+  position: relative;
+  width: 100%;
+}
+
+.iconbtn {
+  margin-left: 1350px;
+  margin-top: 600px;
+  cursor: pointer;
+  padding: 10px 20px;
+  color: rgb(40, 0, 0);
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1001;
+  /* Green background */
+}
+
+.iconbtn svg {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px; /* Add some space between icon and text */
+  vertical-align: middle; /* Align icon vertically with text */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#iconntranslatecontainer {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping to next line */
+  justify-content: space-evenly; /* Distribute items evenly along the main axis */
+  align-items: center;
+  background: rgb(255, 255, 255);
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 40%;
+  height: 50%;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.language-header {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#iconntranslatecontainer button {
+  flex: 0 1 calc(33.33% - 20px);
+  margin-bottom: 20px; /* Add some space between buttons */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#iconntranslatecontainer button img {
+  width: 100%;
+  height: auto;
+  max-height: 100px;
+  object-fit: cover;
+  border-radius: 10px; /* Add rounded corners to images */
+}
+
+.clonse-bt {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  color: black; /* Change to black for better visibility */
+}

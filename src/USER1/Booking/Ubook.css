@@ -1,0 +1,123 @@
+.parking-container {
+  font-family: Arial, sans-serif;
+  margin: 50px auto;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+  color: red;
+  margin-bottom: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.book-lbl {
+  font-weight: bold;
+  margin-right: 10px;
+  color: #007bff; /* Blue color for labels */
+ margin-bottom: 30px;
+}
+
+#book-txtarea {
+  flex-grow: 1;
+  padding: 5px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.price-per-hour {
+  margin-left: 10px;
+ padding: 10px;
+  color: #5b9bd5; /* Highlight color for price */
+}
+
+.car-num {
+  margin-top: 10px;
+}
+
+.book-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.timing {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.time-input {
+  flex-basis: 48%;
+}
+
+.details {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.slots {
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  grid-gap: 10px;
+}
+
+.slot-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.slot-container.checked {
+  background-color: #09ef4a; /* Highlight color when selected */
+  color: #ffffff;
+}
+
+.slot-container.booked {
+  background-color: #ff1500; /* Background color for booked slots */
+}
+
+.slot-container:hover {
+  background-color: #e9ecef; /* Background color on hover */
+}
+
+.slot-checkbox {
+  display: none;
+}
+
+.proceed-button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.proceed-button:hover {
+  background-color: #4a85b4;
+  transform: translateY(-2px); /* Button lift on hover */
+}

@@ -1,0 +1,125 @@
+.body12 {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: 50px;
+    position: absolute;
+    top: 20px;
+    
+}
+
+
+.container12{
+
+    margin-left: 10px;
+    margin-bottom: 250px;
+}
+.container {
+    
+    width: 95%;
+padding: 50px;
+    max-width: 1100px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    width: 2000px;
+
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.header h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.top-right {
+    display: flex;
+    align-items: center;
+}
+
+select {
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+}
+
+.today {
+    font-size: 18px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.table-container {
+    max-height: 400px; /* Set the desired max height */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.sales-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.sales-table th,
+.sales-table td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.sales-table th {
+    background-color: #1b76d1;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+
+.sales-table td {
+    background-color: #f9f9f9;
+    font-size: 16px;
+    color: #333;
+}
+
+.sales-table tbody tr:hover {
+    background-color: #e9f5e9;
+}
+
+.status.in-order {
+    color: red;
+    font-weight: bold;
+}
+
+.status.ordered {
+    color: green;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .header, .top-right {
+        flex-direction: column;
+    }
+
+    .top-right {
+        margin-top: 10px;
+    }
+
+    .sales-table th, .sales-table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+}

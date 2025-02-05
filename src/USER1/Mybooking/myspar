@@ -1,0 +1,346 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './Mybooking.css';
+
+const BookingPage = () => {
+  const [activeTab, setActiveTab] = useState('upcoming');
+  const [bookings, setBookings] = useState({ upcoming: [], completed: [], cancelled: [] });
+
+  useEffect(() => {
+    const fetchBookings = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/getconfirmbo');
+        console.log('Fetched bookings:', response.data); // Debug: Log fetched data
+
+        const fetchedBookings = response.data;
+        const categorizedBookings = {
+          upcoming: [],
+          completed: [],
+          cancelled: []
+        };
+
+        fetchedBookings.forEach(booking => {
+          const bookingDate = new Date(booking.date);
+          const currentDate = new Date();
+
+          if (!booking.date || booking.date.trim() === '') {
+            categorizedBookings.upcoming.push(booking);
+          } else if (bookingDate > currentDate) {
+            categorizedBookings.upcoming.push(booking);
+          } else if (bookingDate <= currentDate) {
+            categorizedBookings.completed.push(booking);
+          }
+        });
+
+        console.log('Categorized bookings:', categorizedBookings); // Debug: Log categorized data
+        setBookings(categorizedBookings);
+      } catch (error) {
+        console.error('Error fetching bookings:', error);
+      }
+    };
+
+    fetchBookings();
+  }, []);
+
+  axios.post('http://localhost:3001/putcancells');
+  console.log('Fetched bookings:', cancellled.document); // Debug: Log fetched data
+
+  axios.deelete('http://localhost:3001/deleteupcoming');
+  console.log('Fetched bookings:', cancellled.document);
+  const cancelBooking = (id) => {
+    console.log(`Cancelled booking with ID: ${id}`);
+  };
+
+  const renderBookings = (type) => {
+    return bookings[type].map((booking) => (
+      <div key={booking._id} className={`booking-item ${type}`}>
+        <h3>{type === 'upcoming' ? 'Upcoming Booking' : type === 'completed' ? 'Completed Booking' : 'Cancelled Booking'}</h3>
+        <p>Date: {booking.date ? booking.date : 'N/A'}</p>
+        <p>City: {booking.city ? booking.city : 'N/A'}</p>
+        <p>Slot: {booking.slotNumbers && booking.slotNumbers.length > 0 ? booking.slotNumbers.join(', ') : 'N/A'}</p>
+        <p>Amount: {booking.totalAmount ? `$${booking.totalAmount}` : 'N/A'}</p>
+        {type === 'upcoming' && (
+          <div className="cancel-btn-container">
+            <button className="cancel-btn" onClick={() => cancelBooking(booking._id)}>Cancel Booking</button>
+          </div>
+        )}
+      </div>
+    ));
+  };
+
+  return (
+    <div className="body16">
+      <div className="userpage">
+        <div className="tabs">
+          <button className={activeTab === 'upcoming' ? 'active' : ''} onClick={() => setActiveTab('upcoming')}>
+            Upcoming Bookings
+          </button>
+          <button className={activeTab === 'completed' ? 'active' : ''} onClick={() => setActiveTab('completed')}>
+            Completed Bookings
+          </button>
+          <button className={activeTab === 'cancelled' ? 'active' : ''} onClick={() => setActiveTab('cancelled')}>
+            Cancelled Bookings
+          </button>
+        </div>
+        <div className="content">
+          {activeTab === 'upcoming' && renderBookings('upcoming')}
+          {activeTab === 'completed' && renderBookings('completed')}
+          {activeTab === 'cancelled' && renderBookings('cancelled')}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BookingPage;
+// its ok
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './Mybooking.css';
+
+const BookingPage = () => {
+  const [activeTab, setActiveTab] = useState('upcoming');
+  const [bookings, setBookings] = useState({ upcoming: [], completed: [], cancelled: [] });
+
+  useEffect(() => {
+    const fetchBookings = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/getconfirmbo');
+        const fetchedBookings = response.data;
+        const categorizedBookings = {
+          upcoming: [],
+          completed: [],
+          cancelled: []
+        };
+
+        fetchedBookings.forEach(booking => {
+          const bookingDate = new Date(booking.date);
+          const currentDate = new Date();
+
+          if (!booking.date || booking.date.trim() === '') {
+            categorizedBookings.upcoming.push(booking);
+          } else if (bookingDate > currentDate) {
+            categorizedBookings.upcoming.push(booking);
+          } else if (bookingDate <= currentDate) {
+            categorizedBookings.completed.push(booking);
+          }
+        });
+
+        setBookings(categorizedBookings);
+      } catch (error) {
+        console.error('Error fetching bookings:', error);
+      }
+    };
+
+    fetchBookings();
+
+    // Fetch cancelled bookings separately
+    const fetchCancelledBookings = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/getcancelledbo');
+        const cancelledBookings = response.data;
+        setBookings(prevBookings => ({
+          ...prevBookings,
+          cancelled: cancelledBookings
+        }));
+      } catch (error) {
+        console.error('Error fetching cancelled bookings:', error);
+      }
+    };
+
+    fetchCancelledBookings();
+  }, []);
+
+  const cancelBooking = async (booking) => {
+    try {
+      // Delete the booking from the confirm_booking collection
+      await axios.delete(`http://localhost:3001/deleteupcoming/${booking._id}`);
+      
+      // Add the booking to the cancelled_booking collection
+      await axios.post('http://localhost:3001/cancellbooking', booking);
+
+      // Update the state
+      setBookings((prevBookings) => {
+        const updatedUpcoming = prevBookings.upcoming.filter(b => b._id !== booking._id);
+        return {
+          ...prevBookings,
+          upcoming: updatedUpcoming,
+          cancelled: [...prevBookings.cancelled, booking]
+        };
+      });
+
+      console.log(`Cancelled booking with ID: ${booking._id}`);
+    } catch (error) {
+      console.error('Error cancelling booking:', error);
+    }
+  };
+
+  const renderBookings = (type) => {
+    return bookings[type].map((booking) => (
+      <div key={booking._id} className={`booking-item ${type}`}>
+        <h3>{type === 'upcoming' ? 'Upcoming Booking' : type === 'completed' ? 'Completed Booking' : 'Cancelled Booking'}</h3>
+        <p>Date: {booking.date ? booking.date : 'N/A'}</p>
+        <p>City: {booking.city ? booking.city : 'N/A'}</p>
+        <p>Slot: {booking.slotNumbers && booking.slotNumbers.length > 0 ? booking.slotNumbers.join(', ') : 'N/A'}</p>
+        <p>Amount: {booking.totalAmount ? `$${booking.totalAmount}` : 'N/A'}</p>
+        {type === 'upcoming' && (
+          <div className="cancel-btn-container">
+            <button className="cancel-btn" onClick={() => cancelBooking(booking)}>Cancel Booking</button>
+          </div>
+        )}
+      </div>
+    ));
+  };
+
+  return (
+    <div className="body16">
+      <div className="userpage">
+        <div className="tabs">
+          <button className={activeTab === 'upcoming' ? 'active' : ''} onClick={() => setActiveTab('upcoming')}>
+            Upcoming Bookings
+          </button>
+          <button className={activeTab === 'completed' ? 'active' : ''} onClick={() => setActiveTab('completed')}>
+            Completed Bookings
+          </button>
+          <button className={activeTab === 'cancelled' ? 'active' : ''} onClick={() => setActiveTab('cancelled')}>
+            Cancelled Bookings
+          </button>
+        </div>
+        <div className="content">
+          {activeTab === 'upcoming' && renderBookings('upcoming')}
+          {activeTab === 'completed' && renderBookings('completed')}
+          {activeTab === 'cancelled' && renderBookings('cancelled')}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BookingPage;
+
+
+//last
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './Mybooking.css';
+
+const BookingPage = () => {
+  const [activeTab, setActiveTab] = useState('upcoming');
+  const [bookings, setBookings] = useState({ upcoming: [], completed: [], cancelled: [] });
+
+  useEffect(() => {
+    const fetchBookings = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/getconfirmbo');
+        const fetchedBookings = response.data;
+        const categorizedBookings = {
+          upcoming: [],
+          completed: [],
+          cancelled: []
+        };
+
+        fetchedBookings.forEach(booking => {
+          const bookingDate = new Date(booking.date);
+          const currentDate = new Date();
+
+          if (!booking.date || booking.date.trim() === '') {
+            categorizedBookings.upcoming.push(booking);
+          } else if (bookingDate > currentDate) {
+            categorizedBookings.upcoming.push(booking);
+          } else if (bookingDate <= currentDate) {
+            categorizedBookings.completed.push(booking);
+          }
+        });
+
+        setBookings(categorizedBookings);
+      } catch (error) {
+        console.error('Error fetching bookings:', error);
+      }
+    };
+
+    fetchBookings();
+
+    // Fetch cancelled bookings separately
+    const fetchCancelledBookings = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/getcancelledbo');
+        const cancelledBookings = response.data;
+        setBookings(prevBookings => ({
+          ...prevBookings,
+          cancelled: cancelledBookings
+        }));
+      } catch (error) {
+        console.error('Error fetching cancelled bookings:', error);
+      }
+    };
+
+    fetchCancelledBookings();
+  }, []);
+
+  const cancelBooking = async (booking) => {
+    try {
+      // Delete the booking from the confirm_booking collection
+      await axios.delete(`http://localhost:3001/deleteupcoming/${booking._id}`);
+      
+      // Add the booking to the cancelled_booking collection
+      await axios.post('http://localhost:3001/cancellbooking', booking);
+
+      // Update the state
+      setBookings((prevBookings) => {
+        const updatedUpcoming = prevBookings.upcoming.filter(b => b._id !== booking._id);
+        return {
+          ...prevBookings,
+          upcoming: updatedUpcoming,
+          cancelled: [...prevBookings.cancelled, booking]
+        };
+      });
+
+      console.log(`Cancelled booking with ID: ${booking._id}`);
+    } catch (error) {
+      console.error('Error cancelling booking:', error);
+    }
+  };
+
+  const renderBookings = (type) => {
+    return bookings[type].map((booking) => (
+      <div key={booking._id} className={`booking-item ${type}`}>
+        <h3>{type === 'upcoming' ? 'Upcoming Booking' : type === 'completed' ? 'Completed Booking' : 'Cancelled Booking'}</h3>
+        <p>Date: {booking.date ? booking.date : 'N/A'}</p>
+        <p>City: {booking.city ? booking.city : 'N/A'}</p>
+        <p>Slot: {booking.slotNumbers && booking.slotNumbers.length > 0 ? booking.slotNumbers.join(', ') : 'N/A'}</p>
+        <p>Amount: {booking.totalAmount ? `$${booking.totalAmount}` : 'N/A'}</p>
+        {type === 'upcoming' && (
+          <div className="cancel-btn-container">
+            <button className="cancel-btn" onClick={() => cancelBooking(booking)}>Cancel Booking</button>
+          </div>
+        )}
+      </div>
+    ));
+  };
+
+  return (
+    <div className="body16">
+      <div className="userpage">
+        <div className="tabs">
+          <button className={activeTab === 'upcoming' ? 'active' : ''} onClick={() => setActiveTab('upcoming')}>
+            Upcoming Bookings
+          </button>
+          <button className={activeTab === 'completed' ? 'active' : ''} onClick={() => setActiveTab('completed')}>
+            Completed Bookings
+          </button>
+          <button className={activeTab === 'cancelled' ? 'active' : ''} onClick={() => setActiveTab('cancelled')}>
+            Cancelled Bookings
+          </button>
+        </div>
+        <div className="content">
+          {activeTab === 'upcoming' && renderBookings('upcoming')}
+          {activeTab === 'completed' && renderBookings('completed')}
+          {activeTab === 'cancelled' && renderBookings('cancelled')}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BookingPage;

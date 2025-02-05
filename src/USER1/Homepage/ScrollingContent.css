@@ -1,0 +1,203 @@
+/*body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 200vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.coontainer {
+    width: 800px;
+    height: 120px;
+    border: 1px solid #ccc;
+    color: aliceblue;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #08194b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    margin: 200px;
+    margin-left: 300px;
+}
+
+.arroww {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: transform 1s ease-out;
+}
+
+.arroow-scrolled {
+    transform: translate(70%,-50%);
+}
+
+.bi-arrow-right-square-fill {
+    width: 30px;
+    height: 30px;
+    fill: #ccc;
+    transition: transform 1s ease-out;
+}
+
+.content {
+    text-align: center;
+    transition: transform 2s ease-out;
+    width: 100%;
+}
+
+.large-text {
+    font-size: 1.5em;
+    transition: font-size 1s ease-out;
+}
+
+.content.scrolled .large-text {
+    font-size: 2em;
+}
+
+.content.scrolled {
+    transform: translateY(50%,-50%);
+}
+.arroww:hover .bi-arrow-right-square-fill {
+    fill: #fff;
+  }
+  
+  .content.scrolled {
+    transform: translateY(0%);
+    transition: transform 1s ease-out;
+  }
+  
+  .content:not(.scrolled) {
+    transform: translateY(100%);
+    transition: transform 0.5s ease-out;
+  }*/
+  
+
+  .scrolling-content-body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 50vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+
+}
+
+.coontainer {
+    text-decoration: none;
+    width: 800px;
+    height: 120px;
+    border: 1px solid #ccc;
+    color: aliceblue;
+    border-radius: 10px;
+margin-top: -60px;
+
+    background-color: #08194b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    margin-left: 160px;
+}
+
+.arroww {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: transform 1s ease-out;
+}
+
+.arroow-scrolled {
+    transform: translate(70%,-50%);
+}
+
+.bi-arrow-right-square-fill {
+    width: 30px;
+    height: 30px;
+    fill: #ccc;
+    transition: transform 1s ease-out;
+}
+
+.content {
+    text-align: center;
+    transition: transform 2s ease-out;
+    width: 100%;
+ 
+}
+
+.large-text {
+    font-size: 1.5em;
+    transition: font-size 1s ease-out;
+}
+
+.content.scrolled .large-text {
+    font-size: 2em;
+}
+
+.content.scrolled {
+    transform: translateY(0%);
+    transition: transform 1s ease-out;
+}
+
+.content.not-scrolled {
+    transform: translateY(100%);
+    transition: transform 0.5s ease-out;
+}
+
+/* Add hover effect to arrow icon */
+.arroww:hover .bi-arrow-right-square-fill {
+    fill: #fff;
+}
+/* Your existing CSS */
+
+.coontainer {
+    /* Your existing styles */
+}
+
+/* Add these styles to position the car and man images at the bottom */
+.car {
+    position: absolute;
+    bottom: 20px; /* Adjust as needed */
+    left: -150px;
+    height: 150px; /* Adjusted size */
+    width: auto;
+    transition: left 4s;
+    z-index: 1; /* Ensures the car is below the content */
+    margin-right: 20px; /* Separation from the man */
+}
+  
+.car-scrolled {
+    left: calc(82% - 115px);
+}
+  
+.car-img {
+    height: 35%; /* Ensures the image fits the container */
+    width: auto;
+}
+  
+.man {
+    position: absolute;
+    bottom: 30px; /* Adjust as needed */
+    right: 190px; /* Adjust as needed */
+    height: 150px; /* Adjusted size */
+    width: auto;
+    z-index: 1; /* Ensures the man is below the content */
+}
+  
+.man-img {
+    height: 40%; /* Ensures the image fits the container */
+    width: auto;
+}

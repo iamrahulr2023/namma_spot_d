@@ -1,0 +1,50 @@
+#about {
+  width: 100%;
+  padding-top: 80px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#abt-cont {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.abt-items {
+  flex: 1;
+  padding: 20px;
+  margin: 5px 30px;
+}
+
+.abt-text-content {
+  padding-right: 20px; /* Add padding to the right to space it from the image */
+}
+
+.abt-items img {
+  max-width: 100%;
+  width: 600px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.abt-text-content h1 {
+  color: rgb(9, 138, 251);
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.abt-text-content p {
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.abt-text-content p b {
+  color: rgb(9, 138, 251);
+}

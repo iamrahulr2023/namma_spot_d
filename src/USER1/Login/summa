@@ -1,0 +1,571 @@
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import "./Login.css";
+
+function Login() {
+  const [error, setError] = useState("");
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
+  const navigate = useNavigate();
+  const [ress, setRess] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!email || !pass) {
+      setError('Please fill in all fields.');
+      return;
+    } else {
+      setError("");
+    }
+
+    axios.post('http://localhost:3001/login', { email, pass })
+      .then(res => {
+        console.log(res);
+
+        if (res.data === "success") {
+          navigate('/home');
+        } else {
+          setRess(res.data);
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        setRess("An error occurred. Please try again.");
+      });
+  }
+
+  return (
+    <section className="user-login-container">
+      <div className="form-box">
+        <div className="form-value">
+          <form onSubmit={handleSubmit}>
+            <h2>Login</h2>
+            <div className="inputbox">
+              <ion-icon name="mail-outline"></ion-icon>
+              <input type="email" required onChange={(e) => setEmail(e.target.value)} />
+              <label>Email</label>
+            </div>
+            <div className="inputbox">
+              <ion-icon name="lock-closed-outline"></ion-icon>
+              <input type="password" required onChange={(e) => setPass(e.target.value)} />
+              <label>Password</label>
+            </div>
+            <p style={{ color: "red" }}>{ress}</p>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            <div className="forget">
+              <label>
+                <input type="checkbox" />
+                Remember Me
+                <a href="#">Forget Password</a>
+              </label>
+            </div>
+            <Link to="/Home"><button type="submit" id="user-login-btn">Log in</button></Link>
+            <div id="user-register-link">
+              <p>
+                Don't have an account? <Link to="/register">Register</Link>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default Login;
+
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import "./Login.css";
+
+function Login() {
+  
+    const [error,seterror] = useState("");
+    const [email,setemail] = useState('')
+    const [pass , setpass ]= useState('')
+    const navigate = useNavigate()
+    const [ress,setress] = useState()
+    
+    const handleSubmit =(e)=>{
+    
+      e.preventDefault()
+    
+        // Check if any required field is empty
+        if ( !email || !pass) {
+          seterror('Please fill in all fields.');
+          return;
+        }
+        else{
+          seterror("")
+        }
+          
+         
+           axios.post('http://localhost:3001/login',{email , pass})
+           .then(res => {console.log(res)
+            console.log(res)
+    
+            if(res.data ==="success"){
+    
+                navigate('/home')
+     
+            }
+            else{
+                setress(res.data) 
+            }     
+          }) 
+           .catch(err => console.log(err))    
+    }
+    
+  return (
+    <section className="user-login-container">
+      <div className="form-box">
+        <div className="form-value">
+          <form onSubmit={handleSubmit}>
+            <h2>Login</h2>
+            <div className="inputbox">
+              <ion-icon name="mail-outline"></ion-icon>
+              <input type="email" value={email} onChange={(e) => setemail(e.target.value)} />
+              <label>Email</label>
+            </div>
+            <div className="inputbox">
+              <ion-icon name="lock-closed-outline"></ion-icon>
+              <input type="password" value={pass} onChange={(e) => setpass(e.target.value)} />
+              <label>Password</label>
+            </div>
+            <p style={{ color: "red" }}>{ress}</p>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            <div className="forget">
+              <label>
+                <input type="checkbox" />
+                Remember Me
+                <a href="#">Forget Password</a>
+              </label>
+            </div>
+            <button type="submit" id="user-login-btn">Log in</button>
+            <div id="user-register-link">
+              <p>
+                Don't have an account? <Link to="/register">Register</Link>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default Login;
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Login.css";
+import { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+function Login() {
+  const [error,seterror] = useState("");
+const [email,setemail] = useState('')
+const [pass , setpass ]= useState('')
+const navigate = useNavigate()
+const [ress,setress] = useState()
+
+const handleSubmit =(e)=>{
+
+  e.preventDefault()
+
+    // Check if any required field is empty
+    if ( !email || !pass) {
+      seterror('Please fill in all fields.');
+      return;
+    }
+    else{
+      seterror("")
+    }
+      
+     
+       axios.post('http://localhost:3001/login',{email , pass})
+       .then(res => {console.log(res)
+      
+        if(res.data ==="success"){
+
+            navigate('/Home')
+        }
+        else{
+            setress(res.data) 
+        }     
+      }) 
+       .catch(err => console.log(err))    
+}
+
+  return (
+    <section className="user-login-container">
+      <div className="form-box">
+        <div className="form-value">
+          <form onSubmit={handleSubmit}>
+            <h2>Login</h2>
+            <div className="inputbox">
+              <ion-icon name="mail-outline"></ion-icon>
+              <input type="email" required 
+              value={email}
+              onChange={(e)=> setemail(e.target.value)}
+               />
+              <label>Email</label>
+            </div>
+            <div className="inputbox">
+              <ion-icon name="lock-closed-outline"></ion-icon>
+              <input type="password" required 
+              value={pass}
+              onChange={(e)=> setpass(e.target.value)}
+              />
+              <label>Password</label>
+            </div>
+            <p style={{color:"red"}}>{ress}</p>
+{error && <p style={{ color: 'red' }}>{error}</p>}
+            <div className="forget">
+              <label>
+                <input type="checkbox" />
+                Remember Me
+                <a href="#">Forget Password</a>
+              </label>
+            </div>
+            <button type="submit" id="user-login-btn">Log in</button>
+            <div id="user-register-link">
+              <p>
+                Don't have an account? <Link to="/Register">Register</Link>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default Login;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins',sans-serif;
+}
+.user-login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    
+    background: url('c:/Users/Home/Documents/login_user_img.jsx.jpg');
+    background-position: center;
+    background-size: cover;
+}
+.form-box{
+    position: relative;
+    width: 400px;
+    height: 530px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+h2{
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+}
+.inputbox{
+    position: relative;
+    margin: 30px 0;
+    width: 310px;
+    border-bottom: 2px solid #fff;
+}
+.inputbox label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1em;
+    pointer-events: none;
+    transition: .5s;
+}
+input:focus ~ label,
+input:valid ~ label{
+top: -5px;
+}
+.inputbox input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding:0 35px 0 5px;
+    color: #fff;
+}
+.inputbox ion-icon{
+    position: absolute;
+    right: 8px;
+    color: #fff;
+    font-size: 1.2em;
+    top: 20px;
+}
+.forget{
+    margin: -15px 0 15px ;
+    font-size: .9em;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;  
+}
+
+.forget label input{
+    margin-right: 3px;
+    
+}
+.forget label a{
+    color: #fff;
+    text-decoration: none;
+}
+.forget label a:hover{
+    text-decoration: underline;
+}
+#user-login-btn{
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    background: #fff;
+    color:rgb(0, 0, 0);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+}
+#user-login-btn a{
+    text-decoration: none;
+    
+}
+#user-register-link{
+    font-size: .9em;
+    color: #fff;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+#user-register-link p a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+}
+#user-register-link p a:hover{
+    text-decoration: underline;
+}
+
+/*
+this is producted route
+
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../AuthContext';
+import './Login.css';
+
+const Login = () => {
+    const navigate = useNavigate();
+    const { setIsAuthenticated } = useAuth();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const [error, setError] = useState('');
+
+    async function loginUser(event) {
+        event.preventDefault();
+
+        if (!email || !password) {
+            setError('Please fill in all fields.');
+            return;
+        } else {
+            setError('');
+        }
+
+        try {
+            const response = await fetch('http://localhost:3001/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (data.token) {
+                localStorage.setItem('token', data.token);
+                setIsAuthenticated(true); // Update the authentication state
+                navigate('/');
+            } else {
+                setMessage(data.message);
+            }
+        } catch (error) {
+            console.error('Error logging in:', error);
+            setMessage('Failed to login. Please try again later.');
+        }
+    }
+
+    return (
+        <section className="user-login-container">
+            <div className="form-box">
+                <div className="form-value">
+                    <form onSubmit={loginUser}>
+                        <h2>Login</h2>
+                        <div className="inputbox">
+                            <ion-icon name="mail-outline"></ion-icon>
+                            <input 
+                                type="email" 
+                                required 
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <label>Email</label>
+                        </div>
+                        <div className="inputbox">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                            <input 
+                                type="password" 
+                                required 
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <label>Password</label>
+                        </div>
+                        <p style={{color: 'red'}}>{message}</p>
+                        {error && <p style={{color: 'red'}}>{error}</p>}
+                        <div className="forget">
+                            <label>
+                                <input type="checkbox" />
+                                Remember Me
+                                <a href="#">Forget Password</a>
+                            </label>
+                        </div>
+                        <button type="submit" id="user-login-btn">Log in</button>
+                        <div id="user-register-link">
+                            <p>
+                                Don't have an account? <Link to="/register">Register</Link>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+export default Login;
+*/
+
+
+
+/*
+this not producted route
+
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './Login.css';
+
+const Login = () => {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const [error, setError] = useState('');
+
+    async function loginUser(event) {
+        event.preventDefault();
+
+        if (!email || !password) {
+            setError('Please fill in all fields.');
+            return;
+        } else {
+            setError('');
+        }
+
+        try {
+            const response = await fetch('http://localhost:3001/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (data.token) {
+                localStorage.setItem('token', data.token);
+                navigate('/');
+            } else {
+                setMessage(data.message);
+            }
+        } catch (error) {
+            console.error('Error logging in:', error);
+            setMessage('Failed to login. Please try again later.');
+        }
+    }
+
+    return (
+        <section className="user-login-container">
+            <div className="form-box">
+                <div className="form-value">
+                    <form onSubmit={loginUser}>
+                        <h2>Login</h2>
+                        <div className="inputbox">
+                            <ion-icon name="mail-outline"></ion-icon>
+                            <input 
+                                type="email" 
+                                required 
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <label>Email</label>
+                        </div>
+                        <div className="inputbox">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                            <input 
+                                type="password" 
+                                required 
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <label>Password</label>
+                        </div>
+                        <p style={{color: 'red'}}>{message}</p>
+                        {error && <p style={{color: 'red'}}>{error}</p>}
+                        <div className="forget">
+                            <label>
+                                <input type="checkbox" />
+                                Remember Me
+                                <a href="#">Forget Password</a>
+                            </label>
+                        </div>
+                        <button type="submit" id="user-login-btn">Log in</button>
+                        <div id="user-register-link">
+                            <p>
+                                Don't have an account? <Link to="/Register">Register</Link>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+export default Login;
+
+*/

@@ -1,0 +1,64 @@
+#service {
+    padding: 50px 0;
+    background-color: #f0f4f8;
+}
+
+#service-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.service-items {
+    margin-right: 20px;
+}
+.service-items  img{
+    border-radius: 20px;
+    margin-left: 100px;
+}
+
+.service-text-content {
+    max-width: 600px;
+}
+
+.service-text-content h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.service-text-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.service-text-content ul {
+    list-style: none;
+    padding: 0;
+    color: black;
+    font-weight: 500;
+}
+
+.service-text-content ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+/* Add hover effect to the service items */
+.service-items,img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Add transition effect for service text content */
+.service-text-content {
+    max-width: 600px;
+    opacity: 0; /* Initially hide the content */
+    transform: translateY(20px); /* Move content down */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Add transition */
+}
+
+/* Show content when it's scrolled into view */
+.service-text-content.show {
+    opacity: 1;
+    transform: translateY(0);
+}

@@ -1,0 +1,208 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const Map = require('./modules/Map'); 
+const details = require('./modules/Details');// Adjusted import
+const Employee = require('./modules/employee')
+
+const app = express();
+
+app.use(express.json());
+app.use(cors());
+
+mongoose.connect('mongodb://127.0.0.1:27017/Admindata', { useNewUrlParser: true, useUnifiedTopology: true });
+
+app.post('/maps', (req,res) => {
+    const location = req.body.location; // Get single location from request body
+    Map.findOneAndUpdate(
+        {}, // Find the first document (or you can specify a specific query)
+        { $push: { locations: location } }, // Append the location to the locations array
+        { new: true, upsert: true } // Create the document if it doesn't exist
+    )
+    .then(result => res.json(result))
+    .catch(err => res.json(err));
+});
+
+app.get('/get', (req, res) => {
+    Map.findById('664827a4b50ea396d0c856fd')
+        .then(result => res.json(result.locations))
+        .catch(err => res.json(err));
+});
+
+
+/*app.post(/maps,(req,res) =>{
+    const location = req.body.location;
+    Map.create({
+       locations :location
+    }).then(result => res.json(result))
+    .catch(err => res.json(err))
+})*/
+
+app.post('/add', (req, res) => {
+    const { area, slot, des, company, city, rate } = req.body;
+    
+    details.create({ area, slot, des, company, city, rate })
+      .then(result => res.json(result))
+      .catch(err => res.json(err));
+  });
+
+
+
+  ///////////logins
+
+
+  /*app.post('/login', async (req, res) => {
+    const { email, pass } = req.body;
+  
+    try {
+      const user = await Employee.findOne({ email: email });
+      if (user) {
+        const isMatch = await bcrypt.compare(pass, user.pass);
+        if (isMatch) {
+          res.json("success");
+        } else {
+          res.json("The password is incorrect");
+        }
+      } else {
+        res.json("Invalid email");
+      }
+    } catch (err) {
+      console.error(err);
+      res.status(500).json("An error occurred. Please try again.");
+    }
+  });
+
+  app.post('/register', async (req, res) => {
+    const { name, email, pass } = req.body;
+  
+    if (!name || !email || !pass) {
+      return res.json("Please fill in all fields.");
+    }
+  
+    try {
+      const hashedPass = await bcrypt.hash(pass, 10);
+      await Employee.create({ name, email, pass: hashedPass });
+      res.json("success");
+    } catch (err) {
+      console.error(err);
+      res.status(500).json("Registration failed. Please try again.");
+    }
+  });*/
+
+  app.post('/reg',(req,res)=>{
+    employees.create(req.body)
+
+ 
+    .then(emps => {
+        if(emps){
+            if(emps.pass !== " " || emps.email !== " " || emps.name !== " " ){
+                res.json("success")
+            }
+            else{
+                res.status(400).json(" not  success")
+            }
+        }
+        else{
+            res.json("invalid data")
+        }  
+        res.json(emps)
+    })
+    .catch(err => res.json(err))
+})
+app.use(bodyParser.json());
+
+app.post('/reg', (req, res) => {
+  const { name, email, pass } = req.body;
+
+  if (!name || !email || !pass) {
+    return res.status(400).json("All fields are required");
+  }
+
+  const newEmployee = new Employee({
+    name,
+    email,
+    pass
+  });
+
+  newEmployee.save()
+    .then(employee => res.json("success"))
+    .catch(err => {
+      console.error(err);
+      res.status(500).json("Registration failed. Please try again.");
+    });
+});
+
+
+
+
+app.listen(3001, () => {
+    console.log("Server is running on port 3001");
+});
+
+
+
+/*app.get('/get', (req, res) => {
+  details.find({})
+      .then(result => {
+          const addresses = result.map(item => item.address);
+          res.json(addresses);
+      })
+      .catch(err => res.json(err));
+});*/
+const router = require("express").Router();
+const Razorpay = require("razorpay");
+const crypto = require("crypto");
+
+
+KEY_ID = "rzp_test_CMsB4Ic9wCgo4O"
+KEY_SECRET = "csqA59cyPOABIXA6ZOEiK2DI"
+
+router.post("/orders", async (req, res) => {
+
+	try {
+		const instance = new Razorpay({
+			key_id: KEY_ID,
+			key_secret: KEY_SECRET,
+		});
+
+		const options = {
+			amount: req.body.amount * 100,
+			currency: "INR",
+			receipt: crypto.randomBytes(10).toString("hex"),
+		};
+
+		instance.orders.create(options, (error, order) => {
+			if (error) {
+				console.log(error);
+				return res.status(500).json({ message: "Something Went Wrong!" });
+			}
+			res.status(200).json({ data: order });
+		});
+	} catch (error) {
+		res.status(500).json({ message: "Internal Server Error!" });
+		console.log(error);
+	}
+});
+
+router.post("/verify", async (req, res) => {
+	try {
+		const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+			req.body;
+		const sign = razorpay_order_id + "|" + razorpay_payment_id;
+		const expectedSign = crypto
+			.createHmac("sha256", KEY_SECRET)
+			.update(sign.toString())
+			.digest("hex");
+
+		if (razorpay_signature === expectedSign) {
+			return res.status(200).json({ message: "Paymentssss verified successfully" });
+		} else {
+			return res.status(400).json({ message: "Invalid signature sent!" });
+		}
+	} catch (error) {
+		res.status(500).json({ message: "Internal Server Error!" });
+		console.log(error);
+	}
+});
+
+module.exports = router;

@@ -1,0 +1,83 @@
+#u-contact {
+    width: 100%;
+    height: 100vh;
+    padding-top: 80px;
+    background: white;
+  }
+  
+  #con-cont {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Align items vertically */
+  }
+  
+  .con-items {
+    flex: 1;
+    padding: 50px;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 5px 30px;
+  }
+  
+  .con-items img {
+    max-width: 100%;
+    width: 600px;
+    height: auto;
+  }
+  
+  .con-items .con-text-content {
+    flex: 1;
+    padding-left: 20px;
+  }
+  
+  .con-items h1 {
+    color: rgb(9, 138, 251);
+    font-weight: bold;
+  }
+  
+  #con-dh2 {
+    color: rgb(63, 63, 63);
+    font-weight: bold;
+  }
+  
+  .con-items form {
+    margin-top: 20px;
+  }
+  
+  .con-items form input,
+  .con-items form textarea {
+    margin: 5px auto;
+    display: block;
+    width: calc(100% - 10px); /* Adjust width to fit inside form */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .con-items form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: rgb(9, 138, 251);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .con-items img {
+    max-width: 100%;
+    width: 600px;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.con-items.scrolled img:hover {
+    transform: scale(1.1); /* Adjust the scale factor as needed */
+}
+#feedbackname:hover{
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+
+}
+.btnssignin:hover
+{background-color: rgb(102, 176, 255);
+}

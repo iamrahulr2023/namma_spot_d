@@ -1,0 +1,153 @@
+.img-sliders {
+  display: flex;
+  flex-direction: row;
+  margin-left: 290px;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.text-contents {
+  width: 40%;
+  padding: 20px;
+}
+
+.left-contents h2{
+color: #000;
+}
+
+.left-contents {
+  padding: 20px;
+}
+
+.container-wrappers {
+  width: 60%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.containers {
+  width: 100px;
+  height: 400px;
+  background-color: #e1e1e1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Align content to the bottom */
+  position: relative;
+  overflow: hidden;
+  transition: width 0.5s ease;
+  border-radius: 10px;
+  margin-right: 10px; /* Add margin to separate containers */
+}
+
+#containers1s.initial {
+  width: 35%; /* Start with full width */
+  transition: none; /* Disable transition initially */
+}
+
+#container1.initial-state {
+  transition: width 0.5s ease; /* Enable transition after initial load */
+}
+
+.containers.shrinkeds {
+  width: 100px;
+}
+
+.container:last-child {
+  margin-right: 0; /* Remove margin from the last container */
+}
+
+.contents {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Align content to the bottom */
+  align-items: center;
+  padding-bottom: 20px; /* Add some padding to the bottom */
+}
+
+.hover-texts {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.initial-texts{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.containers.initial:hover .initial-texts {
+  display: block;
+}
+
+.initial-texts {
+  top: 20px; /* Position initial text at the bottom */
+  color: #280000;
+
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.hover-texts {
+  top: 50%;
+  width: 150px;
+  transform: translate(-50%, -50%);
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.initial-imgs {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  transition: opacity 0.5s ease;
+}
+
+.hover-imgs {
+  opacity: 0;
+  width: 50px;
+  height: 50px;
+}
+
+.containers:hover {
+  width: 250px;
+}
+
+.containers:hover .initial-texts {
+  display: block;
+}
+
+.containers:hover .initial-imgs  {
+  opacity: 0;
+}
+
+.containers:hover .hover-texts {
+  display: block;
+}
+
+.containers:hover .hover-imgs {
+  opacity: 1;
+}
+
+#learnsmoressbtnss{
+  background-color: #0080ff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#learnsmoressbtnss:hover {
+  background-color: #1e4f84;
+}
+img{
+  width: 70%;
+}

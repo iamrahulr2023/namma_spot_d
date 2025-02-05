@@ -1,0 +1,148 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    height: 70px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.navbar.opaque {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo p {
+    font-size: 24px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333333;
+    font-weight: 500;
+    
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-icons svg {
+    width: 30px;
+    height: 28px;
+    margin-right: 8px;
+}
+
+.nav-icons a {
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    margin-right: 8px;
+    color: #333;
+    text-decoration: none;
+}
+
+.nav-links a,
+.nav-icons a {
+    color: #000;
+    text-decoration: none;
+}
+
+.sidebar {
+    position: fixed;
+    top: 60px;
+    right: -350px;
+    height:500px;
+    width: 300px;
+    background-color: #2e1b1b;
+    opacity: 0.8;
+    padding-top: 60px;
+    transition: 0.5s;
+    z-index: 10000000;
+    border-radius: 10px;
+}
+
+.sidebar.open {
+    right: 0;
+}
+
+.sidebar h3 {
+    color: #fff;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+    
+}
+
+.sidebar ul li {
+    padding: 5px;
+    text-align: center;
+    margin-left: 30px;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    width: 230px;
+    height: 40px;
+    padding-top: 8px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #edeaea;
+    color: #142b42;
+    background-size: 50px;
+    border-radius: 20px;
+    transition: transform 0.6s ease;
+}
+.Login-btn{
+
+    background-color: #fff;
+    color: #000;
+margin-left: 100px;
+margin-top: 30px;
+}
+.user-Wel{
+    font-size: larger;
+    text-align: center;
+    margin-top: -60px;
+    margin-bottom: 20px;
+    color: aliceblue;
+}
+.user-Welcome {
+    color: #edeaea;
+    margin-top: -30px;
+    margin-left: 90px;
+}
+
+.user-Welcome svg{
+    color: #edeaea;
+   height: 30px;
+   width: 30px;
+   padding-left: 6px;
+}

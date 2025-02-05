@@ -1,0 +1,5 @@
+import video from "//C:/Users/Home/Documents/homevideo.mp4";
+import image1 from "//c:/Users/Home/Documents/homeimg1.jpg";
+import image2 from "//c:/Users/Home/Documents/car.jpg";
+import image3 from "//c:/Users/Home/Documents/Team.jpg";
+
