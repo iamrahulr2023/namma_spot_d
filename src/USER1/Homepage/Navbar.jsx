@@ -69,7 +69,7 @@ const Navbar = () => {
     useEffect(() => {
         const fetchName = async () => {
             try {
-                const result = await axios.get('http://localhost:3001/getname');
+                const result = await axios.get('https://nammaspot-backend.onrender.com/getname');
                 setUserName(result.data.name.slice(0, 6)); // Slice name to limit to 6 characters
             } catch (err) {
                 console.error('Error fetching name:', err);

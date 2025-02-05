@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -47,7 +45,7 @@ const Map = () => {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:3001/get')
+        axios.get('https://nammaspot-backend.onrender.com/get')
             .then(res => {
                 setLocations(res.data); // Set the fetched locations to state
                 setFilteredLocations(res.data); // Initially, show all locations

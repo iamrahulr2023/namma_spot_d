@@ -21,7 +21,7 @@ const Myslot = () => {
 
   const fetchSlotsData = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/getmapslots');
+      const response = await axios.get('https://nammaspot-backend.onrender.com/getmapslots');
       setSlotsData(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -51,7 +51,7 @@ const Myslot = () => {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`http://localhost:3001/getmapslots/${editData.id}`, editData);
+      await axios.put(`https://nammaspot-backend.onrender.com/getmapslots/${editData.id}`, editData);
       fetchSlotsData();
       setEditData({ id: '', locations: '', city: '', seat: '', place: '', company: '', price: '', des: '' });
     } catch (error) {
@@ -61,7 +61,7 @@ const Myslot = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/getmapslots/${id}`);
+      await axios.delete(`https://nammaspot-backend.onrender.com/getmapslots/${id}`);
       setSlotsData(slotsData.filter(slot => slot._id !== id)); // Remove deleted slot from UI
     } catch (error) {
       console.error('Error deleting document:', error);

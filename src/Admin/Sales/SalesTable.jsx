@@ -9,7 +9,7 @@ const SalesTable = () => {
     const { language } = useLanguage();
 
     useEffect(() => {
-        axios.get('http://localhost:3001/getconfirmb')
+        axios.get('https://nammaspot-backend.onrender.com/getconfirmb')
             .then(result => {
                 if (Array.isArray(result.data)) {
                     setMapData(result.data);

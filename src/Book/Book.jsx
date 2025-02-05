@@ -19,7 +19,7 @@ const AddDetailsForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/adddata', { city, place, seat, des, company, price, status })
+    axios.post('https://nammaspot-backend.onrender.com/adddata', { city, place, seat, des, company, price, status })
       .then(res => console.log(res))
       .catch(err => console.log(err));
     navigate("/AdminHome");
@@ -70,7 +70,7 @@ const AddDetailsForm = () => {
 
     const handlesubmit = (e)=>{
         e.preventDefault();
-        axios.post('http://localhost:3001/adddata',{ city ,place,seat,des,company,price})
+        axios.post('https://nammaspot-backend.onrender.com/adddata',{ city ,place,seat,des,company,price})
         .then(res => console.log(res))
         .catch(err => console.log(err));
         navigate("/AdminHome")

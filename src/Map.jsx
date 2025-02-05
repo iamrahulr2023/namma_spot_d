@@ -52,7 +52,7 @@ const AdminMap = () => {
   }, []);
 
   useEffect(() => {
-    axios.post('http://localhost:3001/add', { locations })
+    axios.post('https://nammaspot-backend.onrender.com/add', { locations })
       .then(res => console.log(res))
       .catch(err => console.log(err));
   }, [locations, currentMarker]);
@@ -243,7 +243,7 @@ const AdminMap = () => {
   }, []);
 
   useEffect(() => {
-    axios.post('http://localhost:3001/add', { locations })
+    axios.post('https://nammaspot-backend.onrender.com/add', { locations })
       .then(res => console.log(res))
       .catch(err => console.log(err));
   }, [locations, currentMarker]);

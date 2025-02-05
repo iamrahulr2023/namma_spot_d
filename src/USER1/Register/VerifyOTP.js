@@ -13,7 +13,7 @@ const VerifyOTP = () => {
         const email = location.state.email;
 
         try {
-            const response = await fetch('http://localhost:3001/verifyOTP', {
+            const response = await fetch('https://nammaspot-backend.onrender.com/verifyOTP', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

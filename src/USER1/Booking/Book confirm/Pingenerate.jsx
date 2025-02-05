@@ -1,88 +1,3 @@
-/*import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import axios from "axios";
-import "./Pingenerate.css";
-import { Link } from "react-router-dom";
-
-const Pin = () => {
-
-  //summa
-  const location = useLocation();
-  const { pin } = location.state || {};
-  const [recentData, setRecentData] = useState(null);
-  const [mapData, setMapData] = useState(null);
-  const [lastUserName, setLastUserName] = useState('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const userDataResponse = await axios.get('http://localhost:3001/getuserdata');
-        const userNameResponse = await axios.get('http://localhost:3001/getname');
-
-        setMapData(userDataResponse.data);
-        setLastUserName(userNameResponse.data.name);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    if (mapData && lastUserName) {
-      axios.post('http://localhost:3001/postconfirmbooking', {
-        slotNumbers: mapData.slotNumbers,
-        name: lastUserName,
-        date: mapData.date,
-        vehicleno: mapData.vehicleno,
-        totalAmount: mapData.totalAmount,
-        city: mapData.city
-      })
-        .then(result => console.log('Data posted successfully', result.data))
-        .catch(err => console.log(err));
-    }
-  }, [mapData, lastUserName]);
-
-  useEffect(() => {
-    axios.get('http://localhost:3001/getuserconfirmdata')
-      .then(result => {
-        setRecentData(result.data);
-
-        if (result.data) {
-          // Send update request after setting recentData
-          axios.post('http://localhost:3001/updatepins', {
-            city: result.data.city,
-            slots: result.data.slotNumbers
-          })
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err));
-        }
-      })
-      .catch(err => console.log(err));
-  }, []);
-
-  return (
-    <div className="ticket-container">
-      <h1 className="ticket-header">Your PIN</h1>
-      <h2 className="ticket-details">{pin}</h2>
-      {recentData && (
-        <div className="ticket-details">
-          <h3>Recent Booking Details:</h3>
-          <h2>Entry Time: {recentData.entryTime}</h2>
-          <h2>Exit Time: {recentData.exitTime}</h2>
-          <h2>Date: {recentData.date}</h2>
-          <h2>Vehicle Number: {recentData.vehicleno}</h2>
-          <h2>Slot Numbers: {recentData.slotNumbers.join(', ')}</h2>
-          <h2>Total Amount: ${recentData.totalAmount}</h2>
-          <Link to="/homePage"><button><h2>OK</h2></button></Link>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default Pin;*/
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
@@ -100,8 +15,8 @@ const Pin = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userDataResponse = await axios.get('http://localhost:3001/getuserdata');
-        const userNameResponse = await axios.get('http://localhost:3001/getname');
+        const userDataResponse = await axios.get('https://nammaspot-backend.onrender.com/getuserdata');
+        const userNameResponse = await axios.get('https://nammaspot-backend.onrender.com/getname');
 
         setMapData(userDataResponse.data);
         setLastUserName(userNameResponse.data.name);
@@ -115,7 +30,7 @@ const Pin = () => {
 
   useEffect(() => {
     if (mapData && lastUserName) {
-      axios.post('http://localhost:3001/postconfirmbooking', {
+      axios.post('https://nammaspot-backend.onrender.com/postconfirmbooking', {
         slotNumbers: mapData.slotNumbers,
         name: lastUserName,
         date: mapData.date,
@@ -129,13 +44,13 @@ const Pin = () => {
   }, [mapData, lastUserName]);
   
   useEffect(() => {
-    axios.get('http://localhost:3001/getuserconfirmdata')
+    axios.get('https://nammaspot-backend.onrender.com/getuserconfirmdata')
       .then(result => {
         setRecentData(result.data);
 
         if (result.data) {
           // Send update request after setting recentData
-          axios.post('http://localhost:3001/updatepins', {
+          axios.post('https://nammaspot-backend.onrender.com/updatepins', {
             city: result.data.city,
             slots: result.data.slotNumbers
           })

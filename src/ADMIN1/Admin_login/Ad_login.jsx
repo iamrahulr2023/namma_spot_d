@@ -26,7 +26,7 @@ const handleSubmit =(e)=>{
     }
       
      
-       axios.post('http://localhost:3001/alogin',{email , pass})
+       axios.post('https://nammaspot-backend.onrender.com/alogin',{email , pass})
        .then(res => {console.log(res)
       
         if(res.data ==="success"){

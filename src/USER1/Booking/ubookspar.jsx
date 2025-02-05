@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
@@ -19,7 +18,7 @@ const ParkingBooking = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:3001/get', { params: { city: city } })
+    axios.get('https://nammaspot-backend.onrender.com/get', { params: { city: city } })
       .then(result => {
         if (result.data.slots) {
           setBookedSlots(result.data.slots);
@@ -178,7 +177,7 @@ const ParkingBooking = () => {
 
   useEffect(() => {
     if (city) {
-      axios.get('http://localhost:3001/getseat', { params: { city } })
+      axios.get('https://nammaspot-backend.onrender.com/getseat', { params: { city } })
         .then(result => {
           console.log('Result from backend:', result.data);
           if (result.data && result.data.totalSlots !== null) {
@@ -338,7 +337,7 @@ const ParkingBooking = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:3001/getseat', { params: { city } })
+    axios.get('https://nammaspot-backend.onrender.com/getseat', { params: { city } })
       .then(result => {
         console.log('Result from backend:', result.data);
         if (result.data && result.data.seat !== null) {

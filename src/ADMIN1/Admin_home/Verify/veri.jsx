@@ -7,7 +7,7 @@ const Verify = () => {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:3001/getpins')
+    axios.get('https://nammaspot-backend.onrender.com/getpins')
       .then(result => setData(result.data))
       .catch(err => console.log(err));
   }, []);
@@ -53,7 +53,7 @@ const Verify = () => {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:3001/getpined')
+    axios.get('https://nammaspot-backend.onrender.com/getpined')
       .then(result => setData(result.data))
       .catch(err => console.log(err));
   }, []);
@@ -70,7 +70,7 @@ const Verify = () => {
   const handleOut = () => {
     const pinData = data.find(item => item.pin === parseInt(pin));
     if (pinData) {
-      axios.post('http://localhost:3001/freeupslots', { pin: parseInt(pin) })
+      axios.post('https://nammaspot-backend.onrender.com/freeupslots', { pin: parseInt(pin) })
         .then(response => setMessage('Slots freed successfully'))
         .catch(err => console.log(err));
     } else {
@@ -109,7 +109,7 @@ const Verify = () => {
   const [seatsToFree, setSeatsToFree] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:3001/getpins')
+    axios.get('https://nammaspot-backend.onrender.com/getpins')
       .then(result => setData(result.data))
       .catch(err => console.log(err));
   }, []);
@@ -126,7 +126,7 @@ const Verify = () => {
   const handleOut = () => {
     const pinData = data.find(item => item.pin === parseInt(pin));
     if (pinData) {
-      axios.post('http://localhost:3001/freeupslots', { 
+      axios.post('https://nammaspot-backend.onrender.com/freeupslots', { 
         pin: parseInt(pin),
         seatsToFree: seatsToFree.split(',').map(seat => seat.trim())
       })
@@ -138,10 +138,10 @@ const Verify = () => {
   };
 
 
-  axios.post('http://localhost:3001/completedbooking',{data})
+  axios.post('https://nammaspot-backend.onrender.com/completedbooking',{data})
   .then(res=>console.log(res))
 
-  axios.delete('http://localhost:3001/upcomingcomingbooking',{data})
+  axios.delete('https://nammaspot-backend.onrender.com/upcomingcomingbooking',{data})
   .then(res=>console.log(res))
   
 
@@ -182,7 +182,7 @@ const Verify = () => {
   const [seatsToFree, setSeatsToFree] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:3001/getpins')
+    axios.get('https://nammaspot-backend.onrender.com/getpins')
       .then(result => setData(result.data))
       .catch(err => console.log(err));
   }, []);
@@ -201,22 +201,22 @@ const Verify = () => {
     if (pinData) {
       try {
         // Fetch the booking document by pin
-        const response = await axios.get('http://localhost:3001/getconfirmbo');
+        const response = await axios.get('https://nammaspot-backend.onrender.com/getconfirmbo');
         const booking = response.data.find(item => item.pin === parseInt(pin));
 
         if (booking) {
           // Delete the booking from the confirm_booking collection
-          await axios.delete(`http://localhost:3001/upcomingbooking/${booking._id}`);
+          await axios.delete(`https://nammaspot-backend.onrender.com/upcomingbooking/${booking._id}`);
           
           // Add the booking to the completed_booking collection
-          await axios.post('http://localhost:3001/completedbooking', booking);
+          await axios.post('https://nammaspot-backend.onrender.com/completedbooking', booking);
 
           // Update the state
           setData(data.filter(item => item.pin !== parseInt(pin)));
           setMessage('Booking moved to completed successfully');
 
           // Free up slots
-          await axios.post('http://localhost:3001/freeupslots', { 
+          await axios.post('https://nammaspot-backend.onrender.com/freeupslots', { 
             pin: parseInt(pin),
             seatsToFree: seatsToFree.split(',').map(seat => seat.trim())
           });
@@ -270,7 +270,7 @@ const Verify = () => {
   const [seatsToFree, setSeatsToFree] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:3001/getpins')
+    axios.get('https://nammaspot-backend.onrender.com/getpins')
       .then(result => setData(result.data))
       .catch(err => console.log(err));
   }, []);
@@ -287,7 +287,7 @@ const Verify = () => {
   const handleOut = () => {
     const pinData = data.find(item => item.pin === parseInt(pin));
     if (pinData) {
-      axios.post('http://localhost:3001/freeupslots', { 
+      axios.post('https://nammaspot-backend.onrender.com/freeupslots', { 
         pin: parseInt(pin),
         seatsToFree: seatsToFree.split(',').map(seat => seat.trim())
       })
@@ -299,10 +299,10 @@ const Verify = () => {
   };
 
 
-  axios.post('http://localhost:3001/completedbooking',{data})
+  axios.post('https://nammaspot-backend.onrender.com/completedbooking',{data})
   .then(res=>console.log(res))
 
-  axios.delete('http://localhost:3001/upcomingcomingbooking',{data})
+  axios.delete('https://nammaspot-backend.onrender.com/upcomingcomingbooking',{data})
   .then(res=>console.log(res))
   
 
@@ -343,7 +343,7 @@ const Verify = () => {
   const [seatsToFree, setSeatsToFree] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:3001/getpins')
+    axios.get('https://nammaspot-backend.onrender.com/getpins')
       .then(result => setData(result.data))
       .catch(err => console.log(err));
   }, []);
@@ -362,22 +362,22 @@ const Verify = () => {
     if (pinData) {
       try {
         // Fetch the booking document by pin
-        const response = await axios.get('http://localhost:3001/getconfirmbo');
+        const response = await axios.get('https://nammaspot-backend.onrender.com/getconfirmbo');
         const booking = response.data.find(item => item.pin === parseInt(pin));
 
         if (booking) {
           // Delete the booking from the confirm_booking collection
-          await axios.delete(`http://localhost:3001/upcomingbooking/${booking._id}`);
+          await axios.delete(`https://nammaspot-backend.onrender.com/upcomingbooking/${booking._id}`);
           
           // Add the booking to the completed_booking collection
-          await axios.post('http://localhost:3001/completedbooking', booking);
+          await axios.post('https://nammaspot-backend.onrender.com/completedbooking', booking);
 
           // Update the state
           setData(data.filter(item => item.pin !== parseInt(pin)));
           setMessage('Booking moved to completed successfully');
 
           // Free up slots
-          await axios.post('http://localhost:3001/freeupslots', { 
+          await axios.post('https://nammaspot-backend.onrender.com/freeupslots', { 
             pin: parseInt(pin),
             seatsToFree: seatsToFree.split(',').map(seat => seat.trim())
           });

@@ -10,7 +10,7 @@ const BookingPage = () => {
 
   const fetchBookings = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/getconfirmbo');
+      const response = await axios.get('https://nammaspot-backend.onrender.com/getconfirmbo');
       const fetchedBookings = response.data;
       const currentDate = new Date();
 
@@ -36,7 +36,7 @@ const BookingPage = () => {
 
   const fetchCancelledBookings = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/getcancelledbo');
+      const response = await axios.get('https://nammaspot-backend.onrender.com/getcancelledbo');
       const cancelledBookings = response.data;
       setBookings((prevBookings) => ({
         ...prevBookings,
@@ -54,8 +54,8 @@ const BookingPage = () => {
 
   const cancelBooking = async (booking) => {
     try {
-      await axios.delete(`http://localhost:3001/deleteupcoming/${booking._id}`);
-      await axios.post('http://localhost:3001/cancellbooking', booking);
+      await axios.delete(`https://nammaspot-backend.onrender.com/deleteupcoming/${booking._id}`);
+      await axios.post('https://nammaspot-backend.onrender.com/cancellbooking', booking);
 
       setBookings((prevBookings) => {
         const updatedUpcoming = prevBookings.upcoming.filter((b) => b._id !== booking._id);

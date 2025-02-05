@@ -14,7 +14,7 @@ const Review = () => {
 
   const handleSubmit = async () => {
     try {
-      const res = await axios.post('http://localhost:3001/review', { cityd, header, body, starcount });
+      const res = await axios.post('https://nammaspot-backend.onrender.com/review', { cityd, header, body, starcount });
       navigate('/map');
       console.log(res);
     } catch (err) {

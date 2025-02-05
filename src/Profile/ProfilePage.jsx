@@ -47,7 +47,7 @@ const ProfilePage = () => {
     localStorage.getItem('profileImage') || 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQAqAMBIgACEQEDEQH/xAAaAAEAAwEBAQAAAAAAAAAAAAAAAQIDBAUH/8QAKhABAAICAAMGBwEBAAAAAAAAAAECAxEhMUEEEhMyYXEiUVJigZGxQhT/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/APuIAAAAAAAAAAAAAAAAAAAAAAAAAAACJmI5qWyfT+2fMGk5I6QjxJ9FAFu/ZPiT6KANYyRPONLRMTyYETrkDoGdL74S0AAAAAAAAAAAZXvvh0WyW1whkAAACJmIjczEQCRTxcf1wtWYtG4mJgEgAL4764TyUAdApjtuNdVwAAAAAAAVyT8IMpnc7QAAAM82Xw44eZxWtN53adytmt38kzPSdKAJra1Z3WdSgVHdhyxkr90c2jgw27uWs+unf1RQAE1nUw3c7XHO4BcAAAAABnl5Q0Z5egMwAAAedbzW95Qvmr3MkxPWdqKAAia+aPd6Lgw172SservlFAAGmLlLNpi5yDQAAAAABTLHw/ldW8broGIAAAM82PxI4eaOTitWazq0TEu+16V81qx+VJy4bRq1qz+AcSa1m06rG3Vvs32rVy4axqLREewJw4ox1+6ebRSuSlvLes/lcAABpi5Szb1jVQSAAAAAAADG8an0Vb2jvRphManUgieEblyZc9rzMUmYr/Wna76iKR14y5QAFQAAbYs80nV5ma/xiA9GJ3G44pc/ZL/DNflydERudQirY67tvpDZWsahYAAAAAAAABW1e96SsA8vtcTGadxwYvXy4qZK6vG/k4svY7140+KPl1ByiZiYnUxMT6oVAAATWJtOqxMz6OnF2O9uN57sfLqDPsm5zRERPJ6NK6gx46Y66rGl0UAAAAAAAAAAAAABFqxbnET7sbdlw24zSI9m4Dn/AOPD9M/tNey4Y/x++LcBWtYrGqxER6LAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/2Q=='
   ); // Initialize with default base64 image or from localStorage
   useEffect(() => {
-    axios.get('http://localhost:3001/getname')
+    axios.get('https://nammaspot-backend.onrender.com/getname')
       .then(result => {
         const fullName = result.data.name.split(' ');
         const slicedPassword = result.data.password.slice(0, 4); // Slice password to 4 characters
@@ -72,7 +72,7 @@ const ProfilePage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/updateprofile', userData)
+    axios.post('https://nammaspot-backend.onrender.com/updateprofile', userData)
       .then(result => {
         setMessage('Profile updated successfully!');
         setTimeout(() => setMessage(''), 3000); // Clear message after 3 seconds

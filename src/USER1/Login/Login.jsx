@@ -20,7 +20,7 @@ const Login = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:3001/api/login', {
+            const response = await fetch('https://nammaspot-backend.onrender.com/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const Login = () => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
-                            <label>Email</label>
+                            <label className="userloginlabels">Email</label>
                         </div>
                         <div className="inputbox">
                             <ion-icon name="lock-closed-outline"></ion-icon>
@@ -66,7 +66,7 @@ const Login = () => {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
-                            <label>Password</label>
+                            <label className="userloginlabels">Password</label>
                         </div>
                         <p style={{color: 'red'}}>{message}</p>
                         {error && <p style={{color: 'red'}}>{error}</p>}
@@ -117,7 +117,7 @@ const Login = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:3001/api/login', {
+            const response = await fetch('https://nammaspot-backend.onrender.com/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

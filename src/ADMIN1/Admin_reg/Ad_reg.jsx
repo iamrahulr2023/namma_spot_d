@@ -30,7 +30,7 @@ function Ad_reg() {
       return;
     }
 
-    axios.post('http://localhost:3001/aregister', { name, email, pass })
+    axios.post('https://nammaspot-backend.onrender.com/aregister', { name, email, pass })
       .then((res) => {
         console.log(res);
         navigate('/alogin');

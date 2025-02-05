@@ -16,7 +16,7 @@ const Register = () => {
 
     async function requestOTP() {
         try {
-            const response = await fetch('http://localhost:3001/reqOTP', {
+            const response = await fetch('https://nammaspot-backend.onrender.com/reqOTP', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ const Register = () => {
         event.preventDefault();
         
         try {
-            const response = await fetch('http://localhost:3001/verifyOTP', {
+            const response = await fetch('https://nammaspot-backend.onrender.com/verifyOTP', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

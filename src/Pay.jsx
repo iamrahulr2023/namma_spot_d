@@ -23,7 +23,7 @@ const Pay = ({Total = 100}) => {
 			order_id: data.id,
 			handler: async (response) => {
 				try {
-					const verifyUrl = "http://localhost:3001/api/payment/verify";
+					const verifyUrl = "https://nammaspot-backend.onrender.com/api/payment/verify";
 					const { data } = await axios.post(verifyUrl, response);
 					console.log(data);
 				} catch (error) {
@@ -40,7 +40,7 @@ const Pay = ({Total = 100}) => {
 
 	const handlePayment = async () => {
 		try {
-			const orderUrl = "http://localhost:3001/api/payment/orders";
+			const orderUrl = "https://nammaspot-backend.onrender.com/api/payment/orders";
 			const { data } = await axios.post(orderUrl, { amount: Total+5 });
 			console.log(data);
 			initPayment(data.data);

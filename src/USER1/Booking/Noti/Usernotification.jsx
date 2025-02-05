@@ -32,13 +32,13 @@ const Usernotification = () => {
   }, []);
 
   const fetchNotifications = () => {
-    axios.get('http://localhost:3001/getnoti')
+    axios.get('https://nammaspot-backend.onrender.com/getnoti')
       .then(result => setData(result.data))
       .catch(err => console.log(err));
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3001/deletenoti/${id}`)
+    axios.delete(`https://nammaspot-backend.onrender.com/deletenoti/${id}`)
       .then(() => {
         setData(data.filter(noti => noti._id !== id));
       })

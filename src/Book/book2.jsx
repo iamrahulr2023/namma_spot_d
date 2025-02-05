@@ -13,7 +13,7 @@ const Book2 = () => {
 
   const handlesubmit = (e)=>{
     e.preventDefault();
-    axios.post('http://localhost:3001/add',{city, area,slot,des,company,rate})
+    axios.post('https://nammaspot-backend.onrender.com/add',{city, area,slot,des,company,rate})
     .then(res => console.log(res))
     .catch(err => console.log(err));
   };
@@ -107,4 +107,3 @@ body {
   .form-button:hover {
     background-color: #0056b3;
   }
-  

@@ -39,7 +39,7 @@ const navigate = useNavigate()
 			order_id: data.id,
 			handler: async (response) => {
 				try {
-					const verifyUrl = "http://localhost:3001/api/payment/verify";
+					const verifyUrl = "https://nammaspot-backend.onrender.com/api/payment/verify";
 					const { data } = await axios.post(verifyUrl, response);
 					console.log(data);
 
@@ -59,7 +59,7 @@ const navigate = useNavigate()
 
 	const handlePayment = async () => {
 		try {
-			const orderUrl = "http://localhost:3001/api/payment/orders";
+			const orderUrl = "https://nammaspot-backend.onrender.com/api/payment/orders";
 			const { data } = await axios.post(orderUrl, { amount: totalAmount });
 			console.log(data);
 			initPayment(data.data);
@@ -81,7 +81,7 @@ const navigate = useNavigate()
 
   const handlesubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/adddetails', { slotNumbers, entryTime, exitTime, date, vehicleno, totalAmount ,pin,city})
+    axios.post('https://nammaspot-backend.onrender.com/adddetails', { slotNumbers, entryTime, exitTime, date, vehicleno, totalAmount ,pin,city})
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };

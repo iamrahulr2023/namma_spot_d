@@ -37,7 +37,7 @@ const WalletPage = () => {
     const [profileImage, setProfileImage] = useState(localStorage.getItem('anotherProfileImageKey') || 'default-image-url');
 
     useEffect(() => {
-        axios.get('http://localhost:3001/getconfirmb')
+        axios.get('https://nammaspot-backend.onrender.com/getconfirmb')
             .then(result => {
                 if (Array.isArray(result.data)) {
                     setTransactions(result.data);
@@ -49,7 +49,7 @@ const WalletPage = () => {
     }, []);
 
     useEffect(() => {
-        axios.get('http://localhost:3001/getaname')
+        axios.get('https://nammaspot-backend.onrender.com/getaname')
             .then(result => {
                 if (result.data && result.data.name) {
                     setAdminName(result.data.name);

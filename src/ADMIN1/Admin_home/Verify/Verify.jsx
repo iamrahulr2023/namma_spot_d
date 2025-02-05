@@ -107,16 +107,16 @@ const Verify = () => {
   } = translations[language] || translations.en;
 
   useEffect(() => {
-    axios.get('http://localhost:3001/getpins')
+    axios.get('https://nammaspot-backend.onrender.com/getpins')
       .then(result => setData(result.data))
       .catch(err => console.error(loadingError, err));
 
-    axios.get('http://localhost:3001/getnumber')
+    axios.get('https://nammaspot-backend.onrender.com/getnumber')
       .then(result => setLatestNumber(result.data.number))
       //.then(result => console.log(result.data.number))
       .catch(err => console.error(err));
 
-    axios.get('http://localhost:3001/getname')
+    axios.get('https://nammaspot-backend.onrender.com/getname')
       .then(result => setEmail(result.data.email))
       .catch(err => console.log(err));
   }, [loadingError]);
@@ -135,7 +135,7 @@ const Verify = () => {
   const handleOut = () => {
     const pinData = data.find(item => item.pin === parseInt(pin));
     if (pinData) {
-      axios.post('http://localhost:3001/freeupslots', {
+      axios.post('https://nammaspot-backend.onrender.com/freeupslots', {
         pin: parseInt(pin),
         seatsToFree: seatsToFree.split(',').map(seat => seat.trim())
       })
@@ -149,7 +149,7 @@ const Verify = () => {
   const handleIn = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3001/putnoti', { noti: youAreIn });
+      await axios.post('https://nammaspot-backend.onrender.com/putnoti', { noti: youAreIn });
       sendNotification(youAreIn);
     } catch (error) {
       console.error('Error sending notification:', error);
@@ -167,7 +167,7 @@ const Verify = () => {
     } else {
       setNoti(youAreOut);
       try {
-        await axios.post('http://localhost:3001/putnoti', { noti: youAreOut });
+        await axios.post('https://nammaspot-backend.onrender.com/putnoti', { noti: youAreOut });
         sendNotification(youAreOut);
         handleOut();
       } catch (error) {
@@ -178,7 +178,7 @@ const Verify = () => {
 
   const handleVerifyOTP = async () => {
     try {
-      const response = await fetch('http://localhost:3001/verifyOTPnew', {
+      const response = await fetch('https://nammaspot-backend.onrender.com/verifyOTPnew', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -195,7 +195,7 @@ const Verify = () => {
         setOTPVerified(true);
         setNoti(youAreOut);
         try {
-          await axios.post('http://localhost:3001/putnoti', { noti: youAreOut });
+          await axios.post('https://nammaspot-backend.onrender.com/putnoti', { noti: youAreOut });
           sendNotification(youAreOut);
           handleOut();
         } catch (error) {
@@ -211,7 +211,7 @@ const Verify = () => {
 
   const requestOTP = async () => {
     try {
-      const response = await fetch('http://localhost:3001/reqOTP', {
+      const response = await fetch('https://nammaspot-backend.onrender.com/reqOTP', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -231,7 +231,7 @@ const Verify = () => {
   };
 
   const sendNotification = (notificationMessage) => {
-    axios.post('http://localhost:3001/sendNotification', {
+    axios.post('https://nammaspot-backend.onrender.com/sendNotification', {
       number: latestNumber,
       message: notificationMessage
     })
