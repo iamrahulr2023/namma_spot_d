@@ -17,6 +17,7 @@ Move-Item -Force "src\USER1\Homepage\man.jpg" "public\assets\images\user\"
 Move-Item -Force "src\USER1\Homepage\WhatsApp Image*.jpg" "public\assets\images\user\"
 Move-Item -Force "src\USER1\Home\*.jpg" "public\assets\images\user\"
 
+
 # Move common images
 Move-Item -Force "google-maps.png" "public\assets\images\common\"
 Move-Item -Force "src\Fpage\bglogo.jpg" "public\assets\images\common\"
