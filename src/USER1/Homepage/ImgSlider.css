@@ -151,3 +151,13 @@ color: #000;
 img{
   width: 70%;
 }
+@media screen and (max-width: 480px) {
+  .img-sliders {
+    display: flex;
+    flex-direction: row;
+    margin-left: 160px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    width: 80%;
+  }
+}

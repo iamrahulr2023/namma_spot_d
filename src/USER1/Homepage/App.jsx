@@ -19,7 +19,7 @@ import CarMoving from './CarMoving';
 const HomePage1 = () => {
   return (
 
-    <div>
+    <div className='home-pages-main'>
      
 <Navbar/>
 <Welcomepage/>
@@ -33,7 +33,6 @@ const HomePage1 = () => {
  <Feedback/>
 <Nammaspotad/>
 <Translateicon/>
-
 <Footer/>
 
       
