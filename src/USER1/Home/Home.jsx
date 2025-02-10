@@ -225,11 +225,11 @@ ParkSpot is part of this new initiative and incorporates various features aimed 
             <h3>Developers</h3>
             <h7>Thamilarasan</h7>
             <br />
-            <h7>Majid Husain</h7>
+           <h7>Rahul</h7>
             <br />
-            <h7>Joy Andrew</h7>
+            <h7>Majid Husain</h7>  
             <br />
-            <h7>Rahul</h7>
+            <h7>Tharan</h7>
             <br />
           </div>
         </div>

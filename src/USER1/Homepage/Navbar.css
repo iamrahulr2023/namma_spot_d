@@ -16,6 +16,7 @@ body {
     right: 0;
     z-index: 1000;
     transition: background-color 0.3s ease;
+    white-space: nowrap; /* Prevent content from wrapping */
 }
 
 .navbar.opaque {
@@ -66,6 +67,12 @@ body {
 .nav-icons a {
     color: #000;
     text-decoration: none;
+}
+
+.nav-icons a, .nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between icon and text */
 }
 
 .sidebar {
@@ -145,4 +152,20 @@ margin-top: 30px;
    height: 30px;
    width: 30px;
    padding-left: 6px;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 0 10px;
+    }
+    .nav-links {
+        gap: 10px;
+    }
+    .nav-icons {
+        gap: 10px;
+    }
+    .nav-links li:nth-child(1), /* Assuming 'Company' is the first item */
+    .nav-links li:nth-child(2) { /* Assuming 'Why Us' is the second item */
+        display: none;
+    }
 }

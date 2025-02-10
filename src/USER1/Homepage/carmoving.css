@@ -12,3 +12,29 @@
 {
     margin-right: -100px;
 }
+@media screen and (max-width: 480px) {
+
+    #manicon
+    {
+        margin-right: -480px;
+
+    }
+    .anime-cont img{
+        margin-top: 1650px;
+        height: 100px;
+        width: 50%;
+        margin-bottom: 20px;
+        margin-left: 160px;
+    }
+    .pagemovingbackground{
+        height:10px ;
+      
+    }
+    @keyframes moveCarX {
+        from { transform: translateX(0); }
+        to { transform: translateX(100px); }
+    }
+    .car {
+        animation: moveCarX 2s infinite alternate;
+    }
+}
