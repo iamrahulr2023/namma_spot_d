@@ -712,3 +712,86 @@ img {
   background: linear-gradient(45deg, #0640f0, #82a5f0); /* Hover effect */
   transform: scale(1.05); /* Scale effect on hover */
 }
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 1200px) {
+  #admin-dashboard-navbar {
+    padding: 0.5rem 2rem;
+  }
+  
+  .admin-box {
+    width: 280px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .admin-main-content h1 {
+    font-size: 3rem;
+  }
+  
+  .admin-main-content h2 {
+    font-size: 2rem;
+  }
+  
+  .feature {
+    flex-direction: column;
+  }
+  
+  .feature-item {
+    width: 80%;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #admin-dashboard-navbar {
+    padding: 0.5rem 1rem;
+  }
+  
+  .navbar-brand {
+    font-size: 20px;
+  }
+  
+  .admin-main-content h1 {
+    font-size: 2.5rem;
+    margin-top: 20px;
+  }
+  
+  .admin-box {
+    width: 90%;
+    margin: 15px auto;
+  }
+  
+  .features {
+    height: auto;
+    padding: 50px 0;
+  }
+  
+  .features h2 {
+    font-size: 35px;
+    margin-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .admin-main-content h1 {
+    font-size: 2rem;
+  }
+  
+  .admin-main-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .admin-main-content p {
+    font-size: 1rem;
+  }
+  
+  #myprofile-btn {
+    margin-right: 20px;
+    padding: 10px 20px;
+  }
+  
+  .feature-item {
+    width: 90%;
+  }
+}

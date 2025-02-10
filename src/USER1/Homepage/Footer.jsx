@@ -22,7 +22,6 @@ const Footer = () => {
         "Thamilarasan GP",
         "Rahul R",
         "Majidhusian J",
-        "Joyandrew S"
       ],
       contactTitle: "CONTACT",
       contactDetails: [
@@ -48,7 +47,6 @@ const Footer = () => {
         "தமிழரசன் G P",
         "ராகுல் R",
         "மஜித்ஹுஸியான் ஜே",
-        "ஜோய் ஆண்ட்ரூ S"
       ],
       contactTitle: "தொடர்பு",
       contactDetails: [
@@ -74,7 +72,6 @@ const Footer = () => {
         "थमिलारासन जी.पी",
         "राहुल आर",
         "माजिदुसियन जे",
-        "जॉयएंड्रू एस"
       ],
       contactTitle: "संपर्क करें",
       contactDetails: [

@@ -455,3 +455,83 @@
   border-radius: 20px;
   transition: transform 0.6s ease;
 }
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 1200px) {
+  #user-home-navbar {
+    padding: 0.5rem 2rem;
+  }
+  
+  .form-control {
+    margin-left: 50px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .navbar-brand {
+    font-size: 2rem !important;
+  }
+  
+  #disc-cont, #res-cont {
+    flex-direction: column;
+  }
+  
+  .disc-items, .res-items {
+    margin: 10px 15px;
+    padding: 30px;
+  }
+  
+  .main-content h1 {
+    font-size: 2rem;
+  }
+  
+  .form-control {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #user-home-navbar {
+    padding: 0.5rem 1rem;
+  }
+  
+  .navbar-brand {
+    font-size: 1.8rem !important;
+  }
+  
+  .main-content .input-group {
+    width: 95%;
+  }
+  
+  .form-control {
+    margin-left: 10px;
+  }
+  
+  .disc-items img, .res-items img {
+    width: 100%;
+  }
+  
+  .comments {
+    height: auto;
+    padding: 40px 20px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .main-content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .main-content p {
+    font-size: 16px;
+  }
+  
+  .disc-items, .res-items {
+    margin: 10px 10px;
+    padding: 20px;
+  }
+  
+  .form-control {
+    margin-left: 0;
+  }
+}
